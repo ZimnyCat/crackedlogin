@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "id": "crackedlogin",
+  "version": "${version}",
+
+  "name": "CrackedLogin",
+  "description": "Automatically remembers passwords and logs in on cracked Minecraft servers",
+  "authors": [
+    "ZimnyCat"
+  ],
+  "contact": {
+    "homepage": "https://github.com/",
+    "sources": "https://github.com/"
+  },
+
+  "license": "MIT",
+  "icon": "assets/crackedlogin/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "zimnycat.crackedlogin.CrackedLogin"
+    ]
+  },
+  "mixins": [
+    "crackedlogin.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.11.3",
+    "fabric": "*",
+    "minecraft": "1.18.x",
+    "java": ">=17"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}
