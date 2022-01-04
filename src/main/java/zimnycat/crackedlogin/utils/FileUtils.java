@@ -34,6 +34,7 @@ public class FileUtils {
             FileWriter fw = new FileWriter(dataPath.toFile());
             fw.write(data + arr[0] + " " + arr[1] + " " + arr[2] + "\n");
             fw.close();
+            MessageUtils.info("Saved new login data (server:" + arr[0] + ", name:" + arr[1]);
         } catch (IOException ignored) {
         }
     }

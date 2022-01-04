@@ -31,6 +31,7 @@ public class MClientConnection {
                 String[] split = str.split(" ");
                 if (split[0].equals(mc.getCurrentServerEntry().address) && split[1].equals(mc.player.getName().getString())) {
                     mc.player.sendChatMessage("/login " + split[2]);
+                    MessageUtils.info("Logged in!");
                     return;
                 }
             });

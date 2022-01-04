@@ -1,6 +1,9 @@
 package zimnycat.crackedlogin.utils;
 
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.text.LiteralText;
+import net.minecraft.util.Formatting;
+import zimnycat.crackedlogin.CrackedLogin;
 
 public class MessageUtils {
 
@@ -16,6 +19,11 @@ public class MessageUtils {
 
     public static String[] createInfoArray(String msg) {
         return new String[]{mc.getCurrentServerEntry().address, mc.player.getName().getString(), msg.split(" ")[1]};
+    }
+
+    public static void info(String msg) {
+        CrackedLogin.LOGGER.info(msg);
+        mc.inGameHud.getChatHud().addMessage(new LiteralText(Formatting.DARK_AQUA + "[CL] " + msg));
     }
 
 }
