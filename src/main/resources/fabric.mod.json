@@ -4,7 +4,7 @@
   "version": "${version}",
 
   "name": "CrackedLogin",
-  "description": "Automatically remembers passwords and logs in on cracked Minecraft servers",
+  "description": "Automatically saves passwords and logs in on cracked Minecraft servers",
   "authors": [
     "ZimnyCat"
   ],
