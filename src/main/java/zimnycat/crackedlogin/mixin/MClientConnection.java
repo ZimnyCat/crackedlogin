@@ -7,6 +7,7 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.network.ClientConnection;
 import net.minecraft.network.Packet;
 import net.minecraft.network.packet.c2s.play.ChatMessageC2SPacket;
+import net.minecraft.network.packet.s2c.play.GameJoinS2CPacket;
 import net.minecraft.network.packet.s2c.play.GameMessageS2CPacket;
 import net.minecraft.util.Formatting;
 import org.spongepowered.asm.mixin.Mixin;
@@ -15,6 +16,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import zimnycat.crackedlogin.utils.FileUtils;
 import zimnycat.crackedlogin.utils.MessageUtils;
+import zimnycat.crackedlogin.utils.TimeUtils;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -26,7 +28,7 @@ public class MClientConnection {
         MinecraftClient mc = MinecraftClient.getInstance();
 
         if (packet_1 instanceof GameMessageS2CPacket) {
-            if (!MessageUtils.isLoginMsgS2C(((GameMessageS2CPacket) packet_1).getMessage().getString())) return;
+            if (!MessageUtils.isLoginMsgS2C(((GameMessageS2CPacket) packet_1).getMessage().getString()) || !TimeUtils.isTimeDiffSmall()) return;
 
             FileUtils.readLoginData().forEach(str -> {
                 String[] split = str.split(" ");
@@ -36,6 +38,8 @@ public class MClientConnection {
                     return;
                 }
             });
+        } else if (packet_1 instanceof GameJoinS2CPacket) {
+            TimeUtils.joinTime = System.currentTimeMillis();
         }
     }
 
@@ -49,6 +53,7 @@ public class MClientConnection {
             String[] parts = new String[]{mc.getCurrentServerEntry() == null ? "localhost" : mc.getCurrentServerEntry().address, mc.player.getName().getString()};
 
             if (msg.startsWith(removePrefix)) {
+                ci.cancel();
                 try {
                     String[] args = msg.replace(removePrefix, "").split(" ");
                     String newData = "";

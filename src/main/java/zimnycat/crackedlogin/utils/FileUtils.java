@@ -1,6 +1,7 @@
 package zimnycat.crackedlogin.utils;
 
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.util.Formatting;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -35,7 +36,8 @@ public class FileUtils {
             fw.write(oldData + newData + "\n");
             fw.close();
             String[] split = newData.split(" ");
-            if (split.length == 3) MessageUtils.info("Saved new login data (server:" + split[0]+ ", name:" + split[1]);
+            if (split.length == 3) MessageUtils.info("Saved new login data (server:" + split[0]+ ", name:" + split[1]
+                    + "\nUse " + Formatting.WHITE + "\"./remove <server> <name>\"" + Formatting.DARK_AQUA + " if you entered an incorrect password");
         } catch (IOException ignored) {
         }
     }
