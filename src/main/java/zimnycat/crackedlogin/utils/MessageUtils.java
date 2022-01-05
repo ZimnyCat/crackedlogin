@@ -17,10 +17,6 @@ public class MessageUtils {
         return msg != null && (msg.startsWith("/login") || msg.startsWith("/l")) && msg.split(" ").length == 2;
     }
 
-    public static String[] createInfoArray(String msg) {
-        return new String[]{mc.getCurrentServerEntry().address, mc.player.getName().getString(), msg.split(" ")[1]};
-    }
-
     public static void info(String msg) {
         CrackedLogin.LOGGER.info(msg);
         mc.inGameHud.getChatHud().addMessage(new LiteralText(Formatting.DARK_AQUA + "[CL] " + msg));

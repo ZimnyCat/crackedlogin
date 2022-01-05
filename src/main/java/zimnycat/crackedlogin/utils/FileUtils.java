@@ -29,12 +29,13 @@ public class FileUtils {
         return new ArrayList<>();
     }
 
-    public static void appendLoginData(String[] arr, String data) {
+    public static void appendLoginData(String newData, String oldData) {
         try {
             FileWriter fw = new FileWriter(dataPath.toFile());
-            fw.write(data + arr[0] + " " + arr[1] + " " + arr[2] + "\n");
+            fw.write(oldData + newData + "\n");
             fw.close();
-            MessageUtils.info("Saved new login data (server:" + arr[0] + ", name:" + arr[1]);
+            String[] split = newData.split(" ");
+            if (split.length == 3) MessageUtils.info("Saved new login data (server:" + split[0]+ ", name:" + split[1]);
         } catch (IOException ignored) {
         }
     }
