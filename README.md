@@ -14,3 +14,7 @@ Use ```./remove <server address> <player name>``` to remove a database entry wit
 ### or
 
 Open ```<Minecraft folder>/loginData.txt``` and remove the entry manually.
+
+## [Download](https://github.com/ZimnyCat/crackedlogin/releases/download/1.0/crackedlogin-1.0.jar)
+
+![](https://raw.githubusercontent.com/ZimnyCat/crackedlogin/main/src/main/resources/assets/crackedlogin/logo.png)
