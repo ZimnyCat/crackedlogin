@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "crackedlogin",
-  "version": "${version}",
+  "version": "1.0",
 
   "name": "CrackedLogin",
   "description": "Automatically saves passwords and logs in on cracked Minecraft servers",

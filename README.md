@@ -9,7 +9,7 @@
 
 ## How to remove a password from database
 
-Use ```./remove <server> <name>``` to remove a database entry with a specific server and name.
+Use ```./remove <server address> <player name>``` to remove a database entry with a specific server and name.
 
 ### or
 
