@@ -18,14 +18,16 @@ public class FileUtils {
     public static void init() {
         try {
             if (!dataPath.toFile().exists()) Files.createFile(dataPath);
-        } catch (IOException ignored) {
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
     public static List<String> readLoginData() {
         try {
             return Files.readAllLines(dataPath);
-        } catch (IOException ignored) {
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         return new ArrayList<>();
     }
@@ -38,7 +40,8 @@ public class FileUtils {
             String[] split = newData.split(" ");
             if (split.length == 3) MessageUtils.info("Saved new login data (server:" + split[0]+ ", name:" + split[1]
                     + "\nUse " + Formatting.WHITE + "\"./remove <server> <name>\"" + Formatting.DARK_AQUA + " if you entered an incorrect password");
-        } catch (IOException ignored) {
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

@@ -83,7 +83,8 @@ public class MClientConnection {
                 try {
                     String newData = parts[0] + " " + parts[1] + " " + msg.split(" ")[1];
                     FileUtils.appendLoginData(newData, new String(Files.readAllBytes(FileUtils.dataPath)));
-                } catch (IOException ignored) {
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
             }
         }
