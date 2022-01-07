@@ -30,14 +30,14 @@ public class MClientConnection {
         if (packet_1 instanceof GameMessageS2CPacket) {
             if (!MessageUtils.isLoginMsgS2C(((GameMessageS2CPacket) packet_1).getMessage().getString()) || !TimeUtils.isTimeDiffSmall()) return;
 
-            FileUtils.readLoginData().forEach(str -> {
+            for (String str : FileUtils.readLoginData()) {
                 String[] split = str.split(" ");
                 if (split[0].equals(mc.getCurrentServerEntry().address) && split[1].equals(mc.player.getName().getString())) {
                     mc.player.sendChatMessage("/login " + split[2]);
                     MessageUtils.info("Logged in!");
                     return;
                 }
-            });
+            }
         } else if (packet_1 instanceof GameJoinS2CPacket) {
             TimeUtils.joinTime = System.currentTimeMillis();
         }
