@@ -22,4 +22,8 @@ public class MessageUtils {
         mc.inGameHud.getChatHud().addMessage(new LiteralText(Formatting.DARK_AQUA + "[CL] " + msg));
     }
 
+    public static String[] getServerAndName(MinecraftClient mc) {
+        return new String[]{mc.getCurrentServerEntry() == null ? "localhost" : mc.getCurrentServerEntry().address, mc.player.getName().getString()};
+    }
+
 }

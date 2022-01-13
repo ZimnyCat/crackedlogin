@@ -19,7 +19,11 @@ public class CommandUtil {
         String[] args = msg.replace(CommandBase.cmdPrefix, "").split(" ");
         cmdList.forEach(cmd -> {
             if (cmd.getName().equals(args[0])) {
-                cmd.run(ArrayUtils.remove(args, 0));
+                try {
+                    cmd.run(ArrayUtils.remove(args, 0));
+                } catch (Exception e) {
+                    MessageUtils.info(cmd.getErrorMSG());
+                }
             }
         });
     }

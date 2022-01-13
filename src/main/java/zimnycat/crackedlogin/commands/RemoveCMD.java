@@ -13,18 +13,28 @@ public class RemoveCMD extends CommandBase {
     }
 
     @Override
-    public void run(String[] args) {
-        String newData = "";
+    public String getErrorMSG() {
+        return "Command format: " + Formatting.WHITE + "./remove <server> <name>  OR  ./remove this";
+    }
 
-        if (args.length != 2) {
-            MessageUtils.info("Command format: " + Formatting.WHITE + "./remove <server> <name>");
+    @Override
+    public void run(String[] args) {
+        if (args[0].equals("this")) {
+            String[] parts = MessageUtils.getServerAndName(mc);
+            removeLine(parts[0], parts[1]);
             return;
         }
 
+        removeLine(args[0], args[1]);
+    }
+
+    void removeLine(String first, String second) {
+        String newData = "";
+
         for (String str : FileUtils.readLoginData()) {
             String[] split = str.split(" ");
-            if (!args[0].equals(split[0]) || !args[1].equals(split[1])) newData += str + "\n";
-            else MessageUtils.info("A password for server " + args[0] + " and name " + args[1] + " removed");
+            if (!first.equals(split[0]) || !second.equals(split[1])) newData += str + "\n";
+            else MessageUtils.info("A password for server " + first + " and name " + second + " removed");
         }
         FileUtils.appendLoginData(newData, "");
     }

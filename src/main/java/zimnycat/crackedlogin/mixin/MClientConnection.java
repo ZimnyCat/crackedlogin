@@ -50,7 +50,7 @@ public class MClientConnection {
 
         if (packet instanceof ChatMessageC2SPacket) {
             String msg = ((ChatMessageC2SPacket) packet).getChatMessage();
-            String[] parts = new String[]{mc.getCurrentServerEntry() == null ? "localhost" : mc.getCurrentServerEntry().address, mc.player.getName().getString()};
+            String[] parts = MessageUtils.getServerAndName(mc);
 
             if (msg.startsWith(CommandBase.cmdPrefix)) {
                 CommandUtil.runCMD(msg);
