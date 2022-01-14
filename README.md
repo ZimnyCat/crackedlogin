@@ -9,7 +9,7 @@
 
 ## How to remove a password from database
 
-Use ```./remove <server address> <player name>``` to remove a database entry with a specific server and name.
+Use ```./remove <server address> <player name>``` to remove a database entry with a specific server and name or use ```./remove this``` to remove a database entry with current server and name.
 
 ### or
 
@@ -23,6 +23,6 @@ Use ```./add <password>``` to add a database entry.
 
 Open ```<Minecraft folder>/loginData.txt``` and add the entry manually.
 
-## [Download](https://github.com/ZimnyCat/crackedlogin/releases/download/1.1/crackedlogin-1.1.jar)
+## [Download](https://github.com/ZimnyCat/crackedlogin/releases/download/1.2/crackedlogin-1.2.jar)
 
 ![](https://raw.githubusercontent.com/ZimnyCat/crackedlogin/main/src/main/resources/assets/crackedlogin/logo.png)
