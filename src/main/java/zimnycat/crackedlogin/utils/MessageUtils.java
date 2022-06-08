@@ -1,7 +1,7 @@
 package zimnycat.crackedlogin.utils;
 
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.text.LiteralText;
+import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import zimnycat.crackedlogin.CrackedLogin;
 
@@ -19,7 +19,7 @@ public class MessageUtils {
 
     public static void info(String msg) {
         CrackedLogin.LOGGER.info(msg);
-        mc.inGameHud.getChatHud().addMessage(new LiteralText(Formatting.DARK_AQUA + "[CL] " + msg));
+        mc.inGameHud.getChatHud().addMessage(Text.of(Formatting.DARK_AQUA + "[CL] " + msg));
     }
 
     public static String[] getServerAndName(MinecraftClient mc) {

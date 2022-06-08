@@ -29,7 +29,7 @@ public class MClientConnection {
         MinecraftClient mc = MinecraftClient.getInstance();
 
         if (packet_1 instanceof GameMessageS2CPacket) {
-            if (!MessageUtils.isLoginMsgS2C(((GameMessageS2CPacket) packet_1).getMessage().getString()) || !TimeUtils.isTimeDiffSmall()) return;
+            if (!MessageUtils.isLoginMsgS2C(((GameMessageS2CPacket) packet_1).content().getString()) || !TimeUtils.isTimeDiffSmall()) return;
 
             for (String str : FileUtils.readLoginData()) {
                 String[] split = str.split(" ");
