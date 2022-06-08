@@ -23,6 +23,6 @@ Use ```./add <password>``` to add a database entry.
 
 Open ```<Minecraft folder>/loginData.txt``` and add the entry manually.
 
-## [Download](https://github.com/ZimnyCat/crackedlogin/releases/download/1.2/crackedlogin-1.2.jar)
+## [Download](https://github.com/ZimnyCat/crackedlogin/releases/download/19/crackedlogin-19.jar)
 
 ![](https://raw.githubusercontent.com/ZimnyCat/crackedlogin/main/src/main/resources/assets/crackedlogin/logo.png)
