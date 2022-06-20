@@ -6,7 +6,7 @@ public abstract class CommandBase {
 
     public static MinecraftClient mc = MinecraftClient.getInstance();
 
-    public static String cmdPrefix = "./";
+    public static String cmdPrefix = "cl/";
 
     public abstract String getName();
 

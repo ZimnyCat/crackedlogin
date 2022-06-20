@@ -26,4 +26,8 @@ public class MessageUtils {
         return new String[]{mc.getCurrentServerEntry() == null ? "localhost" : mc.getCurrentServerEntry().address, mc.player.getName().getString()};
     }
 
+    public static String cum(String name) {
+        return Formatting.WHITE + name + Formatting.DARK_AQUA;
+    }
+
 }
