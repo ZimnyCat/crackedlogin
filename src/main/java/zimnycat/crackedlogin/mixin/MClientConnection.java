@@ -53,8 +53,14 @@ public class MClientConnection {
             String[] parts = MessageUtils.getServerAndName(mc);
 
             if (msg.startsWith(CommandBase.cmdPrefix)) {
-                CommandUtil.runCMD(msg);
                 ci.cancel();
+                if (msg.equals(CommandBase.cmdPrefix)) {
+                    MessageUtils.info("Commands: " +
+                            MessageUtils.cum(CommandBase.cmdPrefix + "add") + " | " +
+                            MessageUtils.cum(CommandBase.cmdPrefix + "remove"));
+                    return;
+                }
+                CommandUtil.runCMD(msg);
                 return;
             }
 
