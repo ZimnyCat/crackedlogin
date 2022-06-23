@@ -7,6 +7,7 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.network.ClientConnection;
 import net.minecraft.network.Packet;
 import net.minecraft.network.packet.c2s.play.ChatMessageC2SPacket;
+import net.minecraft.network.packet.c2s.play.CommandExecutionC2SPacket;
 import net.minecraft.network.packet.s2c.play.GameJoinS2CPacket;
 import net.minecraft.network.packet.s2c.play.GameMessageS2CPacket;
 import org.spongepowered.asm.mixin.Mixin;
@@ -29,12 +30,12 @@ public class MClientConnection {
         MinecraftClient mc = MinecraftClient.getInstance();
 
         if (packet_1 instanceof GameMessageS2CPacket) {
-            if (!MessageUtils.isLoginMsgS2C(((GameMessageS2CPacket) packet_1).content().getString()) || !TimeUtils.isTimeDiffSmall()) return;
+            if (!MessageUtils.isLoginMessage(((GameMessageS2CPacket) packet_1).content().getString()) || !TimeUtils.isTimeDiffSmall()) return;
 
             for (String str : FileUtils.readLoginData()) {
                 String[] split = str.split(" ");
                 if (split[0].equals(mc.getCurrentServerEntry().address) && split[1].equals(mc.player.getName().getString())) {
-                    mc.player.sendChatMessage("/login " + split[2]);
+                    mc.player.sendCommand("login " + split[2]);
                     MessageUtils.info("Logged in!");
                     return;
                 }
@@ -50,7 +51,6 @@ public class MClientConnection {
 
         if (packet instanceof ChatMessageC2SPacket) {
             String msg = ((ChatMessageC2SPacket) packet).getChatMessage();
-            String[] parts = MessageUtils.getServerAndName(mc);
 
             if (msg.startsWith(CommandBase.cmdPrefix)) {
                 ci.cancel();
@@ -61,20 +61,20 @@ public class MClientConnection {
                     return;
                 }
                 CommandUtil.runCMD(msg);
-                return;
             }
+        } else if (packet instanceof CommandExecutionC2SPacket) {
+            String[] parts = MessageUtils.getServerAndName(mc);
+            String cmd = ((CommandExecutionC2SPacket) packet).command();
 
-            if (!MessageUtils.isLoginMsgC2S(msg)) return;
+            if (!MessageUtils.isLoginCommand(cmd)) return;
 
             for (String str : FileUtils.readLoginData()) {
                 String[] split = str.split(" ");
-                if (split[0].equals(parts[0]) && split[1].equals(parts[1])) {
-                    return;
-                }
+                if (split[0].equals(parts[0]) && split[1].equals(parts[1])) return;
             }
 
             try {
-                String newData = parts[0] + " " + parts[1] + " " + msg.split(" ")[1];
+                String newData = parts[0] + " " + parts[1] + " " + cmd.split(" ")[1] + "\n";
                 FileUtils.appendLoginData(newData, new String(Files.readAllBytes(FileUtils.dataPath)));
             } catch (IOException e) {
                 e.printStackTrace();
