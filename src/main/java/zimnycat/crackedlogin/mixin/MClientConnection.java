@@ -45,12 +45,12 @@ public class MClientConnection {
         }
     }
 
-    @Inject(method = "send(Lnet/minecraft/network/Packet;Lio/netty/util/concurrent/GenericFutureListener;)V", at = @At("HEAD"), cancellable = true)
-    private void send(Packet<?> packet, GenericFutureListener<? extends Future<? super Void>> packetCallback, CallbackInfo ci) {
+    @Inject(method = "send(Lnet/minecraft/network/Packet;)V", at = @At("HEAD"), cancellable = true)
+    private void send(Packet<?> packet, CallbackInfo ci) {
         MinecraftClient mc = MinecraftClient.getInstance();
 
         if (packet instanceof ChatMessageC2SPacket) {
-            String msg = ((ChatMessageC2SPacket) packet).getChatMessage();
+            String msg = ((ChatMessageC2SPacket) packet).chatMessage();
 
             if (msg.startsWith(CommandBase.cmdPrefix)) {
                 ci.cancel();
