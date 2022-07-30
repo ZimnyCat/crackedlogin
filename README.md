@@ -1,4 +1,4 @@
-# CrackedLogin
+# CrackedLogin 1.19.1
 
 ### Automatically saves passwords and logs in on cracked Minecraft servers
 
