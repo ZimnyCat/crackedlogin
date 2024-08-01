@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "crackedlogin",
-  "version": "19.1",
+  "version": "21",
 
   "name": "CrackedLogin",
   "description": "Automatically saves passwords and logs in on cracked Minecraft servers",
@@ -13,7 +13,7 @@
     "sources": "https://github.com/ZimnyCat/crackedlogin"
   },
 
-  "license": "MIT",
+  "license": "WTFPL",
   "icon": "assets/crackedlogin/icon.png",
 
   "environment": "*",
@@ -29,8 +29,8 @@
   "depends": {
     "fabricloader": ">=0.13.3",
     "fabric": "*",
-    "minecraft": "1.19.1",
-    "java": ">=17"
+    "minecraft": "1.21",
+    "java": ">=21"
   },
   "suggests": {
     "another-mod": "*"

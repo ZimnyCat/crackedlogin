@@ -1,4 +1,4 @@
-# CrackedLogin 1.19.1
+# CrackedLogin 1.21
 
 ### Automatically saves passwords and logs in on cracked Minecraft servers
 
@@ -23,6 +23,6 @@ Use ```cl/add <password>``` to add a database entry.
 
 Open ```<Minecraft folder>/loginData.txt``` and add the entry manually.
 
-## [Download](https://github.com/ZimnyCat/crackedlogin/releases/download/19.1/crackedlogin-19.1.jar)
+## [Download](https://github.com/ZimnyCat/crackedlogin/releases/download/21/crackedlogin-21.jar)
 
 ![](https://raw.githubusercontent.com/ZimnyCat/crackedlogin/main/src/main/resources/assets/crackedlogin/logo.png)
